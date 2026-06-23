@@ -1,4 +1,6 @@
 import { MotionConfig } from 'framer-motion'
+import SmoothScroll from './components/SmoothScroll.jsx'
+import Cursor from './components/Cursor.jsx'
 import ScrollProgress from './components/ScrollProgress.jsx'
 import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
@@ -16,6 +18,8 @@ import FloatingActions from './components/FloatingActions.jsx'
 export default function App() {
   return (
     <MotionConfig reducedMotion="user">
+      <SmoothScroll />
+      <Cursor />
       <a className="skip" href="#main">Skip to content</a>
       <ScrollProgress />
       <Nav />

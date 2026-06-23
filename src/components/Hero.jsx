@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
+import { motion, useScroll, useTransform, useSpring, useMotionValue, useReducedMotion } from 'framer-motion'
 import { Whatsapp, Check, HouseLine, Rupee, Shield } from '../icons.jsx'
 import { PHONE_INTL } from '../data.js'
 import Magnetic from './Magnetic.jsx'
@@ -20,15 +20,45 @@ const line = {
 export default function Hero() {
   const ref = useRef(null)
   const reduce = useReducedMotion()
+
+  // Scroll parallax
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const collageY = useTransform(scrollYProgress, [0, 1], [0, 90])
-  const collageScale = useTransform(scrollYProgress, [0, 1], [1, 1.06])
   const textY = useTransform(scrollYProgress, [0, 1], [0, 40])
 
+  // Mouse-driven 3D parallax
+  const mx = useMotionValue(0)
+  const my = useMotionValue(0)
+  const smx = useSpring(mx, { stiffness: 120, damping: 18, mass: 0.4 })
+  const smy = useSpring(my, { stiffness: 120, damping: 18, mass: 0.4 })
+  const sceneRotY = useTransform(smx, [-0.5, 0.5], [15, -15])
+  const sceneRotX = useTransform(smy, [-0.5, 0.5], [-11, 11])
+  const layer = (ax, ay) => ({
+    x: useTransform(smx, [-0.5, 0.5], ax),
+    y: useTransform(smy, [-0.5, 0.5], ay),
+  })
+  const ph1 = layer([-10, 10], [-8, 8])
+  const ph2 = layer([24, -24], [18, -18])
+  const k1 = layer([-32, 32], [26, -26])
+  const k2 = layer([28, -28], [-22, 22])
+  const g1 = layer([22, -22], [16, -16])
+  const g2 = layer([-18, 18], [-14, 14])
+
+  const onMove = (e) => {
+    if (reduce || !ref.current) return
+    const r = ref.current.getBoundingClientRect()
+    mx.set((e.clientX - r.left) / r.width - 0.5)
+    my.set((e.clientY - r.top) / r.height - 0.5)
+  }
+  const onLeave = () => {
+    mx.set(0)
+    my.set(0)
+  }
+
   return (
-    <section className="hero" ref={ref}>
-      <div className="glow g1" aria-hidden="true" />
-      <div className="glow g2" aria-hidden="true" />
+    <section className="hero" ref={ref} onMouseMove={onMove} onMouseLeave={onLeave}>
+      <motion.div className="glow g1" style={reduce ? undefined : g1} aria-hidden="true" />
+      <motion.div className="glow g2" style={reduce ? undefined : g2} aria-hidden="true" />
       <div className="wrap">
         <motion.div
           variants={container} initial="hidden" animate="show"
@@ -69,25 +99,31 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        <motion.div style={{ y: reduce ? 0 : collageY, scale: reduce ? 1 : collageScale }}>
+        <motion.div style={{ y: reduce ? 0 : collageY }}>
           <motion.div
-            className="collage"
             initial={{ opacity: 0, scale: 0.96, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.2, 0.7, 0.2, 1], delay: 0.2 }}
           >
-            <div className="ph ph1"><div className="house"><HouseLine /></div></div>
-            <motion.div className="ph ph2" animate={{ y: [0, -12, 0] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}>
-              <div className="house"><HouseLine stroke="rgba(201,96,63,.5)" /></div>
+            <motion.div
+              className="collage"
+              style={reduce ? undefined : { rotateX: sceneRotX, rotateY: sceneRotY, transformPerspective: 1000 }}
+            >
+              <motion.div className="ph ph1" style={{ ...(reduce ? {} : ph1), z: 10 }}>
+                <div className="house"><HouseLine /></div>
+              </motion.div>
+              <motion.div className="ph ph2" style={{ ...(reduce ? {} : ph2), z: 55 }}>
+                <div className="house"><HouseLine stroke="rgba(201,96,63,.5)" /></div>
+              </motion.div>
+              <motion.div className="kpi k1" style={{ ...(reduce ? {} : k1), z: 90 }}>
+                <span className="ic" style={{ background: 'var(--terra)' }}><Rupee /></span>
+                <div>No hidden charges<small>transparent invoices</small></div>
+              </motion.div>
+              <motion.div className="kpi k2" style={{ ...(reduce ? {} : k2), z: 80 }}>
+                <span className="ic" style={{ background: 'var(--green)' }}><Shield /></span>
+                <div>Verified &amp; trusted<small>real local support</small></div>
+              </motion.div>
             </motion.div>
-            <motion.div className="kpi k1" animate={{ y: [0, -10, 0] }} transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}>
-              <span className="ic" style={{ background: 'var(--terra)' }}><Rupee /></span>
-              <div>No hidden charges<small>transparent invoices</small></div>
-            </motion.div>
-            <div className="kpi k2">
-              <span className="ic" style={{ background: 'var(--green)' }}><Shield /></span>
-              <div>Verified &amp; trusted<small>real local support</small></div>
-            </div>
           </motion.div>
         </motion.div>
       </div>

@@ -52,12 +52,27 @@ h1,h2,h3{font-family:var(--display);color:var(--green);font-weight:600;line-heig
   .menu-btn{display:flex}
 }
 
+/* Lenis smooth scroll */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:hidden}
+
 /* scroll progress bar (motionsites-style) */
 .scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;transform-origin:0 50%;background:linear-gradient(90deg,var(--terra),var(--sun));z-index:100}
 
+/* custom follow cursor (desktop fine pointers only) */
+.cursor{display:none}
+@media(pointer:fine){
+  .cursor{display:block;position:fixed;top:0;left:0;width:16px;height:16px;margin:-8px 0 0 -8px;border:2px solid var(--terra);border-radius:50%;pointer-events:none;z-index:200;mix-blend-mode:multiply;
+    transition:width .22s ease,height .22s ease,margin .22s ease,background .22s ease}
+  .cursor.hover{width:46px;height:46px;margin:-23px 0 0 -23px;background:rgba(201,96,63,.12)}
+}
+
 .hero{padding:64px 0 84px;position:relative;overflow:hidden}
 /* soft cinematic glow behind hero */
-.hero .glow{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;pointer-events:none;z-index:0}
+.hero .glow{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;pointer-events:none;z-index:0;animation:glowpulse 7s ease-in-out infinite}
+@keyframes glowpulse{0%,100%{opacity:.4}50%{opacity:.64}}
 .hero .glow.g1{width:420px;height:420px;background:radial-gradient(circle,rgba(233,185,73,.45),transparent 70%);top:-120px;right:6%}
 .hero .glow.g2{width:380px;height:380px;background:radial-gradient(circle,rgba(201,96,63,.32),transparent 70%);bottom:-140px;left:-60px}
 .hero .wrap{display:grid;grid-template-columns:1.02fr .98fr;gap:50px;align-items:center;position:relative;z-index:1}
@@ -74,7 +89,7 @@ h1,h2,h3{font-family:var(--display);color:var(--green);font-weight:600;line-heig
 .heart{width:20px;height:20px;border-radius:50%;background:#e6f1ec;color:var(--green);display:grid;place-items:center;flex:none}
 .heart svg{width:12px;height:12px}
 
-.collage{position:relative;height:440px}
+.collage{position:relative;height:440px;transform-style:preserve-3d}
 .ph{position:absolute;border-radius:24px;box-shadow:var(--shadow);overflow:hidden;border:5px solid #fff}
 .ph1{width:62%;height:74%;left:0;top:0;background:linear-gradient(150deg,#cfe0d8,#9ec0b3)}
 .ph2{width:50%;height:56%;right:0;bottom:0;background:linear-gradient(150deg,#f3d9c6,#e0a98a)}
@@ -96,9 +111,12 @@ section.pad{padding:84px 0}
 .sec-head h2{font-size:clamp(28px,4vw,44px);margin-top:14px}
 .sec-head p{margin-top:14px;color:var(--ink-2);font-size:17px}
 
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px 26px}
-.card .ic{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;color:#fff;margin-bottom:18px;transform:rotate(-4deg)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;perspective:1200px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px 26px;transition:box-shadow .2s}
+.card.tilt{transform-style:preserve-3d}
+.card.tilt:hover{box-shadow:var(--shadow)}
+.card.tilt h3,.card.tilt>p,.card.tilt ul{transform:translateZ(26px)}
+.card .ic{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;color:#fff;margin-bottom:18px;transform:rotate(-4deg) translateZ(50px)}
 .card .ic svg{width:26px;height:26px}
 .card h3{font-size:20px;margin-bottom:8px}
 .card p{font-size:14.5px;color:var(--ink-2);margin-bottom:14px}
@@ -187,4 +205,4 @@ footer{padding:60px 0 34px;background:var(--cream-2);margin-top:84px;border-top:
 
 @media(max-width:900px){.hero .wrap,.nriband,.cta{grid-template-columns:1fr}.collage{height:340px;margin-top:10px}.grid3,.quotes{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.grid3,.quotes{grid-template-columns:1fr}.nriband,.cta{padding:30px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important}}

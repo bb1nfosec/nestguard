@@ -1,10 +1,11 @@
 import { HouseMark } from '../icons.jsx'
 import { PHONE_INTL, PHONE_DISPLAY, EMAIL } from '../data.js'
+import { scrollToTop } from '../scroll.js'
 
 export default function Footer() {
   const toTop = (e) => {
     e.preventDefault()
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    scrollToTop()
   }
   return (
     <footer>

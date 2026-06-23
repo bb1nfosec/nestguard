@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Whatsapp, ArrowUp } from '../icons.jsx'
 import { PHONE_INTL } from '../data.js'
+import { scrollToTop } from '../scroll.js'
 
 export default function FloatingActions() {
   const [show, setShow] = useState(false)
@@ -27,7 +28,7 @@ export default function FloatingActions() {
         {show && (
           <motion.button
             className="top" aria-label="Back to top"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={scrollToTop}
             initial={{ opacity: 0, scale: 0.6 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.6 }}
             whileHover={{ y: -3, scale: 1.06 }} whileTap={{ scale: 0.95 }}
           >

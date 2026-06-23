@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { HouseMark, Menu } from '../icons.jsx'
+import { scrollToTop } from '../scroll.js'
 
 const links = [
   ['#services', 'Services'],
@@ -34,7 +35,7 @@ export default function Nav() {
 
   const toTop = (e) => {
     e.preventDefault()
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    scrollToTop()
   }
 
   return (
