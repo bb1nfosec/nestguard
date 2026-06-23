@@ -3,52 +3,54 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>NestGuard — Redesign Proposals</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',system-ui,sans-serif;background:#0c1116;color:#e6edf3;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
-.wrap{width:min(1040px,92vw);margin:0 auto;padding:64px 0 80px}
-.kick{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#2DD4BF;font-weight:600}
-h1{font-size:clamp(30px,5vw,46px);font-weight:800;margin:14px 0 10px;letter-spacing:-.02em}
-.sub{color:#8b98a5;font-size:17px;max-width:62ch}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px}
-.card{display:flex;flex-direction:column;background:#141b22;border:1px solid #283039;border-radius:18px;overflow:hidden;transition:transform .2s,border-color .2s,box-shadow .2s;color:inherit;text-decoration:none}
-.card:hover{transform:translateY(-6px);border-color:#2DD4BF;box-shadow:0 24px 60px -30px rgba(45,212,191,.5)}
-.swatch{height:120px;display:flex;align-items:flex-end;padding:14px;gap:7px}
-.dot{width:30px;height:30px;border-radius:9px;border:1px solid rgba(255,255,255,.15)}
-.a .swatch{background:linear-gradient(120deg,#0B2A4A,#0F766E)}
-.b .swatch{background:linear-gradient(120deg,#0E1512,#1b261f)}
-.c .swatch{background:linear-gradient(120deg,#FBF6EE,#F3E9DA)}
-.body{padding:20px 22px 24px;flex:1;display:flex;flex-direction:column}
-.tag{font-size:12px;font-weight:600;color:#2DD4BF;letter-spacing:.04em}
-h3{font-size:20px;font-weight:700;margin:6px 0 8px}
-.body p{font-size:14px;color:#8b98a5;flex:1}
-.open{margin-top:16px;font-weight:600;font-size:14px;color:#2DD4BF}
-.note{margin-top:46px;font-size:14px;color:#8b98a5;border-top:1px solid #283039;padding-top:22px}
-@media(max-width:760px){.grid{grid-template-columns:1fr}}
-</style>
+<title>NestGuard — Honest Property Management in Coimbatore | Rentals, Repairs & NRI Care</title>
+<meta name="description" content="Friendly, honest property management in Coimbatore. Rent collection, tenant screening, repairs, legal help and complete NRI remote care — real updates, fair pricing, zero hidden charges." />
+<meta name="keywords" content="property management Coimbatore, NRI property care, rental management, tenant screening, property maintenance, NestGuard" />
+<meta name="author" content="NestGuard" />
+<meta name="theme-color" content="#2F5D50" />
+<link rel="canonical" href="https://bb1nfosec.github.io/nestguard/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="NestGuard" />
+<meta property="og:title" content="NestGuard — Honest Property Management in Coimbatore" />
+<meta property="og:description" content="Rentals, repairs, legal help and complete NRI remote care — real updates, fair pricing, zero hidden charges." />
+<meta property="og:url" content="https://bb1nfosec.github.io/nestguard/" />
+<meta property="og:locale" content="en_IN" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="NestGuard — Honest Property Management in Coimbatore" />
+<meta name="twitter:description" content="Rentals, repairs, legal help and complete NRI remote care — fair pricing, zero hidden charges." />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%232F5D50'/%3E%3Cpath d='M5 12.5 12 6l7 6.5M7 11v8h10v-8' stroke='%23fff' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%232F5D50'/%3E%3Cpath d='M5 12.5 12 6l7 6.5M7 11v8h10v-8' stroke='%23fff' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "name": "NestGuard",
+  "description": "Honest property management in Coimbatore — rentals, repairs, legal help and complete NRI remote care.",
+  "url": "https://bb1nfosec.github.io/nestguard/",
+  "telephone": "+91-8344481044",
+  "email": "nestguardprop@gmail.com",
+  "areaServed": "Coimbatore, Tamil Nadu, India",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Coimbatore",
+    "addressRegion": "Tamil Nadu",
+    "addressCountry": "IN"
+  },
+  "priceRange": "₹₹",
+  "knowsLanguage": ["en", "ta"]
+}
+</script>
 </head>
 <body>
-<div class="wrap">
-  <span class="kick">NestGuard · Redesign</span>
-  <h1>Three directions to choose from</h1>
-  <p class="sub">Same content &amp; structure (hero, services, owner protection, process, NRI, testimonials, contact) — three distinct design languages. Open each, then pick one and I'll build it out in full with framer-motion.</p>
-  <div class="grid">
-    <a class="card a" href="./a-trust-light.html">
-      <div class="swatch"><span class="dot" style="background:#0B2A4A"></span><span class="dot" style="background:#0F766E"></span><span class="dot" style="background:#1FAF9A"></span><span class="dot" style="background:#F4B400"></span></div>
-      <div class="body"><span class="tag">Direction A</span><h3>Trust Light / Proptech</h3><p>Clean, credible, fintech-grade. Light UI, navy + teal, amber accent, animated stat reveals and an "owner dashboard" hero. Keeps the existing brand colours, elevated.</p><span class="open">Open preview →</span></div>
-    </a>
-    <a class="card b" href="./b-editorial-dark.html">
-      <div class="swatch"><span class="dot" style="background:#0E1512"></span><span class="dot" style="background:#C8A862"></span><span class="dot" style="background:#F3EFE6"></span><span class="dot" style="background:#7FA08C"></span></div>
-      <div class="body"><span class="tag">Direction B</span><h3>Editorial Dark / Luxury</h3><p>Cinematic and premium. Dark canvas, large serif display, gold accents, line-by-line hero reveal and editorial service rows. Closest to the motionsites.ai energy.</p><span class="open">Open preview →</span></div>
-    </a>
-    <a class="card c" href="./c-warm-residential.html">
-      <div class="swatch"><span class="dot" style="background:#2F5D50"></span><span class="dot" style="background:#C9603F"></span><span class="dot" style="background:#E9B949"></span><span class="dot" style="background:#FBF6EE"></span></div>
-      <div class="body"><span class="tag">Direction C</span><h3>Warm Residential</h3><p>Friendly and human. Cream + terracotta + green, rounded cards, hand-drawn underline, marquee strip and WhatsApp-forward. Feels local and approachable, not corporate.</p><span class="open">Open preview →</span></div>
-    </a>
-  </div>
-  <p class="note">These are static visual previews (HTML/CSS + light JS animation). The chosen direction gets rebuilt as a full React + framer-motion app for the real motion. Contact: 8344481044 · nestguardprop@gmail.com · Coimbatore.</p>
-</div>
+<div id="root"></div>
+<script type="module" src="/src/main.jsx"></script>
 </body>
 </html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bb1nfosec.github.io/nestguard/sitemap.xml
