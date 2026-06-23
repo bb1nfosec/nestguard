@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NestGuard — Property Management in Coimbatore | Trust Light</title>
+<meta name="description" content="Transparent property management, rentals, maintenance and NRI support in Coimbatore. Verified vendors, fair pricing, no hidden charges." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B2A4A; --navy-2:#123a63; --ink:#17304b; --slate:#5d6f82;
+  --teal:#0F766E; --teal-2:#1FAF9A; --blue:#0369A1; --amber:#F4B400;
+  --bg:#F4F9FC; --bg-2:#E8F2F8; --card:#ffffff; --line:#e2edf4;
+  --shadow:0 18px 50px -28px rgba(11,42,74,.35);
+  --sans:'Inter',system-ui,sans-serif; --display:'Poppins',var(--sans);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--display);color:var(--navy);line-height:1.1;letter-spacing:-.015em}
+.wrap{width:min(1140px,92vw);margin:0 auto}
+.eyebrow{font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;padding:13px 22px;border-radius:12px;border:1px solid transparent;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,background .15s}
+.btn-primary{background:linear-gradient(120deg,var(--teal),var(--teal-2));color:#fff;box-shadow:0 12px 30px -12px rgba(15,118,110,.65)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px -14px rgba(15,118,110,.7)}
+.btn-ghost{background:#fff;color:var(--navy);border-color:var(--line);box-shadow:var(--shadow)}
+.btn-ghost:hover{transform:translateY(-2px);border-color:#c9ddea}
+.amber{color:var(--amber)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(244,249,252,.78);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;color:var(--navy);font-size:19px}
+.brand .mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--navy),var(--teal));display:grid;place-items:center}
+.brand svg{width:18px;height:18px}
+.nav-links{display:flex;gap:30px;font-size:14.5px;font-weight:500;color:var(--slate)}
+.nav-links a{position:relative;transition:color .15s}
+.nav-links a:hover{color:var(--navy)}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--teal);transition:width .2s}
+.nav-links a:hover::after{width:100%}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.callnum{font-weight:600;color:var(--navy);font-size:14.5px}
+@media(max-width:860px){.nav-links,.callnum{display:none}}
+
+/* hero */
+.hero{position:relative;padding:74px 0 90px;overflow:hidden}
+.hero::before{content:"";position:absolute;width:620px;height:620px;right:-160px;top:-220px;border-radius:50%;
+  background:radial-gradient(circle,rgba(31,175,154,.22),transparent 62%);filter:blur(8px);z-index:0}
+.hero::after{content:"";position:absolute;width:520px;height:520px;left:-200px;bottom:-260px;border-radius:50%;
+  background:radial-gradient(circle,rgba(3,105,161,.14),transparent 62%);z-index:0}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;
+  padding:7px 14px;font-size:13px;font-weight:600;color:var(--teal);box-shadow:var(--shadow)}
+.pill .dot{width:8px;height:8px;border-radius:50%;background:var(--teal-2);box-shadow:0 0 0 4px rgba(31,175,154,.18)}
+.hero h1{font-size:clamp(34px,5.4vw,58px);margin:22px 0 0;font-weight:800}
+.hero h1 .grad{background:linear-gradient(115deg,var(--teal),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{margin-top:20px;font-size:18px;color:var(--slate);max-width:33ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+.trust-row{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:30px;font-size:13.5px;font-weight:500;color:var(--ink)}
+.trust-row span{display:inline-flex;align-items:center;gap:8px}
+.tick{width:18px;height:18px;border-radius:50%;background:rgba(15,118,110,.12);color:var(--teal);display:grid;place-items:center;flex:none}
+.tick svg{width:11px;height:11px}
+
+/* hero card */
+.hcard{position:relative;background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:var(--shadow)}
+.hcard h4{font-family:var(--display);color:var(--navy);font-size:16px;margin-bottom:4px}
+.hcard .sub{font-size:13px;color:var(--slate);margin-bottom:18px}
+.hc-row{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-top:1px solid var(--line)}
+.hc-row:first-of-type{border-top:0}
+.hc-k{display:flex;align-items:center;gap:11px;font-weight:600;color:var(--ink);font-size:14.5px}
+.hc-ic{width:36px;height:36px;border-radius:10px;background:var(--bg-2);color:var(--teal);display:grid;place-items:center;flex:none}
+.hc-ic svg{width:18px;height:18px}
+.hc-v{font-size:12.5px;font-weight:600;color:var(--teal);background:rgba(15,118,110,.08);border:1px solid rgba(15,118,110,.2);border-radius:7px;padding:4px 9px}
+.float-chip{position:absolute;background:#fff;border:1px solid var(--line);border-radius:13px;padding:11px 14px;box-shadow:var(--shadow);font-weight:600;font-size:13px;color:var(--navy);display:flex;align-items:center;gap:9px}
+.float-chip .ico{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;color:#fff}
+.float-chip.fc1{top:-22px;left:-26px;animation:floaty 5s ease-in-out infinite}
+.float-chip.fc2{bottom:-24px;right:-18px;animation:floaty 6s ease-in-out .6s infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+
+/* stat band */
+.stats{background:var(--navy);color:#fff;padding:40px 0}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.stat .num{font-family:var(--display);font-size:clamp(30px,4vw,42px);font-weight:800;color:#fff}
+.stat .num .amber{color:var(--amber)}
+.stat .lbl{font-size:13.5px;color:#aebfd0;margin-top:4px}
+
+/* sections */
+section.pad{padding:88px 0}
+.sec-head{max-width:660px;margin-bottom:42px}
+.sec-head h2{font-size:clamp(28px,3.6vw,40px);margin-top:12px;font-weight:800}
+.sec-head p{margin-top:14px;color:var(--slate);font-size:17px}
+
+/* services */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 24px;transition:transform .2s,box-shadow .2s,border-color .2s}
+.svc:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:#cfe3ef}
+.svc .ic{width:50px;height:50px;border-radius:14px;background:linear-gradient(135deg,var(--bg-2),#fff);border:1px solid var(--line);color:var(--teal);display:grid;place-items:center;margin-bottom:16px}
+.svc .ic svg{width:24px;height:24px}
+.svc h3{font-size:19px;margin-bottom:8px}
+.svc p{font-size:14.5px;color:var(--slate);margin-bottom:14px}
+.svc ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.svc li{font-size:13.5px;color:var(--ink);display:flex;gap:9px;align-items:flex-start}
+.svc li .tick{margin-top:2px}
+
+/* split: problem -> solution */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:stretch}
+.panel{border-radius:20px;padding:34px 32px}
+.panel.prob{background:#fff;border:1px solid var(--line)}
+.panel.sol{background:linear-gradient(160deg,var(--navy),var(--navy-2));color:#fff}
+.panel h3{font-size:22px;margin-bottom:18px}
+.panel.sol h3{color:#fff}
+.panel ul{list-style:none;display:flex;flex-direction:column;gap:14px}
+.panel li{display:flex;gap:12px;font-size:15px;align-items:flex-start}
+.panel.prob li{color:var(--slate)}
+.panel.sol li{color:#dbe8f3}
+.xc{width:22px;height:22px;border-radius:50%;flex:none;display:grid;place-items:center;margin-top:1px}
+.panel.prob .xc{background:#fdecec;color:#d9534f}
+.panel.sol .xc{background:rgba(31,175,154,.2);color:#67e8cf}
+.xc svg{width:12px;height:12px}
+
+/* how it works */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+.step{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 22px}
+.step .n{font-family:var(--display);font-weight:800;font-size:15px;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--teal),var(--teal-2));margin-bottom:16px}
+.step h4{font-family:var(--display);color:var(--navy);font-size:17px;margin-bottom:7px}
+.step p{font-size:13.5px;color:var(--slate)}
+
+/* nri */
+.nri{background:linear-gradient(160deg,#063a43,#0F766E);color:#fff;border-radius:26px;padding:54px;position:relative;overflow:hidden}
+.nri::after{content:"";position:absolute;width:420px;height:420px;right:-120px;top:-160px;border-radius:50%;background:radial-gradient(circle,rgba(244,180,0,.22),transparent 60%)}
+.nri .inner{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.nri h2{color:#fff;font-size:clamp(26px,3.4vw,38px)}
+.nri p{color:#cdeae5;margin-top:14px;font-size:16.5px;max-width:42ch}
+.nri-list{display:flex;flex-direction:column;gap:14px}
+.nri-list .item{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:16px 18px}
+.nri-list h4{font-family:var(--display);color:#fff;font-size:15.5px;margin-bottom:3px}
+.nri-list p{margin:0;color:#bfe3dd;font-size:13.5px}
+
+/* testimonials */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.quote{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 26px;box-shadow:0 10px 30px -24px rgba(11,42,74,.4)}
+.quote .stars{color:var(--amber);font-size:15px;letter-spacing:2px;margin-bottom:12px}
+.quote p{font-size:15px;color:var(--ink);font-style:italic}
+.quote .who{margin-top:18px;display:flex;align-items:center;gap:12px}
+.av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--teal));color:#fff;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:15px}
+.who b{display:block;color:var(--navy);font-family:var(--display);font-size:14.5px}
+.who span{font-size:12.5px;color:var(--slate)}
+
+/* contact */
+.cta-band{background:#fff;border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:46px}
+.cta-band h2{font-size:clamp(26px,3.4vw,38px)}
+.cta-band .lead{color:var(--slate);margin-top:14px;font-size:16.5px}
+.contact-lines{margin-top:26px;display:flex;flex-direction:column;gap:14px}
+.cl{display:flex;align-items:center;gap:14px}
+.cl .ic{width:44px;height:44px;border-radius:12px;background:var(--bg-2);color:var(--teal);display:grid;place-items:center;flex:none}
+.cl .ic svg{width:20px;height:20px}
+.cl small{display:block;color:var(--slate);font-size:12.5px}
+.cl b{font-family:var(--display);color:var(--navy);font-size:16px}
+form{display:flex;flex-direction:column;gap:13px}
+.frow{display:flex;gap:13px}
+input,textarea{width:100%;font-family:var(--sans);font-size:15px;padding:13px 15px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink)}
+input:focus,textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px rgba(15,118,110,.12)}
+label{font-size:12.5px;font-weight:600;color:var(--navy);margin-bottom:-4px}
+textarea{resize:vertical;min-height:90px}
+
+/* footer */
+footer{background:var(--navy);color:#cdd9e6;padding:54px 0 30px;margin-top:0}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.1)}
+footer .brand{color:#fff}
+footer h5{font-family:var(--display);color:#fff;font-size:14px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
+footer a{display:block;color:#aebfd0;font-size:14px;padding:5px 0;transition:color .15s}
+footer a:hover{color:var(--teal-2)}
+.foot-bot{padding-top:22px;font-size:13px;color:#8ea2b6;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}.reveal.d5{transition-delay:.4s}
+
+@media(max-width:980px){
+  .hero .wrap,.split,.nri .inner,.cta-band{grid-template-columns:1fr}
+  .grid3,.quotes{grid-template-columns:1fr 1fr}
+  .steps,.stats .wrap{grid-template-columns:1fr 1fr}
+  .nri{padding:36px}
+}
+@media(max-width:560px){
+  .grid3,.quotes,.steps,.stats .wrap,.frow{grid-template-columns:1fr}
+  .cta-band{padding:30px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}.reveal{opacity:1;transform:none;transition:none}}
+
+.demo-tag{position:fixed;bottom:14px;left:14px;z-index:99;background:var(--navy);color:#fff;font-size:11.5px;font-weight:600;padding:7px 12px;border-radius:9px;box-shadow:var(--shadow);font-family:var(--sans);opacity:.85}
+</style>
+</head>
+<body>
+<div class="demo-tag">Direction A · Trust Light / Proptech</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#"><span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11.5 12 4l9 7.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v9h14v-9" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 19v-5h4v5" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></svg></span>NestGuard</a>
+    <nav class="nav-links">
+      <a href="#services">Services</a><a href="#how">How it works</a><a href="#nri">NRI</a><a href="#why">Why us</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <span class="callnum">8344481044</span>
+      <a class="btn btn-primary" href="#contact">Free Consultation</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="pill reveal"><span class="dot"></span> Coimbatore &amp; nearby cities</span>
+      <h1 class="reveal d1">Your property,<br><span class="grad">our responsibility.</span></h1>
+      <p class="lead reveal d2">Transparent property management, rentals, maintenance and NRI support — with verified vendors, fair pricing and zero hidden charges.</p>
+      <div class="hero-cta reveal d3">
+        <a class="btn btn-primary" href="#contact">Get Free Consultation</a>
+        <a class="btn btn-ghost" href="tel:8344481044"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 4h3l2 5-2 1a11 11 0 0 0 5 5l1-2 5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke="#0B2A4A" stroke-width="1.8" stroke-linejoin="round"/></svg> Call now</a>
+      </div>
+      <div class="trust-row reveal d4">
+        <span><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Verified &amp; trusted support</span>
+        <span><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Fast response &amp; follow-up</span>
+        <span><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Clear documentation</span>
+      </div>
+    </div>
+    <div style="position:relative">
+      <div class="float-chip fc1"><span class="ico" style="background:var(--teal)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Vendor verified</div>
+      <div class="float-chip fc2"><span class="ico" style="background:var(--amber)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M7 8h7a3 3 0 0 1 0 6H8" stroke="#0B2A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> No hidden charges</div>
+      <div class="hcard reveal d2">
+        <h4>Owner dashboard</h4>
+        <div class="sub">A clear view of what's happening with your property</div>
+        <div class="hc-row"><div class="hc-k"><span class="hc-ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span> Rent collected</div><span class="hc-v">On time</span></div>
+        <div class="hc-row"><div class="hc-k"><span class="hc-ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2 4 6v6c0 5 8 8 8 8s8-3 8-8V6l-8-4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span> Tenant screening</div><span class="hc-v">Verified</span></div>
+        <div class="hc-row"><div class="hc-k"><span class="hc-ic"><svg viewBox="0 0 24 24" fill="none"><path d="M14 3v5h5M7 3h8l5 5v13H7z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span> Repair invoice</div><span class="hc-v">Transparent</span></div>
+        <div class="hc-row"><div class="hc-k"><span class="hc-ic"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span> Inspection</div><span class="hc-v">Monthly</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap">
+    <div class="stat reveal"><div class="num" data-count="150">0</div><div class="lbl">Owners served</div></div>
+    <div class="stat reveal d1"><div class="num"><span class="amber">0</span></div><div class="lbl">Hidden charges, ever</div></div>
+    <div class="stat reveal d2"><div class="num" data-count="6">0</div><div class="lbl">Service categories</div></div>
+    <div class="stat reveal d3"><div class="num" data-count="24" data-suffix="/7">0</div><div class="lbl">NRI remote support</div></div>
+  </div>
+</section>
+
+<section class="pad" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Our Services</span>
+      <h2>Structured services for every property need</h2>
+      <p>Each category solves a real owner problem — from rental setup and repair control to legal support and remote oversight.</p>
+    </div>
+    <div class="grid3">
+      <div class="svc reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11 12 4l9 7M5 10v10h14V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Property Management</h3><p>Day-to-day management that keeps your property stable, occupied and professionally monitored.</p><ul><li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Tenant management &amp; rent collection</li><li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Regular inspections &amp; updates</li></ul></div>
+      <div class="svc reveal d1"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 21V8l8-5 8 5v13M9 21v-6h6v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Rental &amp; Lettings</h3><p>Place the right tenant and keep the rental process professionally managed end-to-end.</p><ul><li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Listing &amp; tenant screening</li><li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Agreements &amp; deposit handling</li></ul></div>
+      <div class="svc reveal d2"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="m14 6 4 4M3 21l4-1 11-11-3-3L4 17l-1 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Maintenance &amp; Repairs</h3><p>Repair coordination with cost transparency, verified vendors and no hidden charges.</p><ul><li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Plumbing, electrical, cleaning</li><li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Verified vendors, clear invoices</li></ul></div>
+      <div class="svc reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M6 3h9l4 4v14H6zM14 3v5h5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div><h3>Legal &amp; Documentation</h3><p>Documentation and compliance support that reduces owner risk and confusion.</p><ul><li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Agreements &amp; police verification</li><li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Dispute handling &amp; eviction</li></ul></div>
+      <div class="svc reveal d1"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M2 12h20M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" stroke="currentColor" stroke-width="2"/></svg></div><h3>NRI Services</h3><p>Remote-first management for owners outside India who need confidence and local action.</p><ul><li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Periodic checks &amp; inventory</li><li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Bill payments, full remote mgmt</li></ul></div>
+      <div class="svc reveal d2"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V9m5 10V5m5 14v-7m5 7V8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><h3>Investment &amp; Advisory</h3><p>Support around monitoring, movement, valuation and smart investment decisions.</p><ul><li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Plot monitoring (anti-encroachment)</li><li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Valuation &amp; investment consulting</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="why" style="background:linear-gradient(180deg,#fff,var(--bg))">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">Problem → Solution</span><h2>Stop losing money on property issues</h2><p>Owners lose money not just from vacancy — but from unstructured repairs, tenant disputes and poor documentation. NestGuard brings control back.</p></div>
+    <div class="split">
+      <div class="panel prob reveal"><h3>Where money leaks</h3><ul>
+        <li><span class="xc"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>Late rent and inconsistent follow-up</li>
+        <li><span class="xc"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>Tenant issues that consume your time</li>
+        <li><span class="xc"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>Overpriced repairs &amp; inflated deductions</li>
+        <li><span class="xc"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>Damage discovered far too late</li>
+        <li><span class="xc"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>Legal &amp; documentation complications</li>
+      </ul></div>
+      <div class="panel sol reveal d1"><h3>How NestGuard solves it</h3><ul>
+        <li><span class="xc"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Verified vendors with transparent invoices</li>
+        <li><span class="xc"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Protection from inflated repair deductions</li>
+        <li><span class="xc"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Regular inspections catch issues early</li>
+        <li><span class="xc"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Rent tracking &amp; escalation in one system</li>
+        <li><span class="xc"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Legal guidance that reduces owner stress</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="how">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">How it works</span><h2>A simple process that keeps ownership stress-free</h2><p>Easy to understand, easy to start, and dependable once your property is under management.</p></div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><h4>Contact us</h4><p>Share your property details, ownership goals and the support you need right now.</p></div>
+      <div class="step reveal d1"><div class="n">2</div><h4>Property assessment</h4><p>We review condition, rental potential, documentation needs and immediate priorities.</p></div>
+      <div class="step reveal d2"><div class="n">3</div><h4>Tenant &amp; rental setup</h4><p>We organise onboarding, rental documentation and the operating structure.</p></div>
+      <div class="step reveal d3"><div class="n">4</div><h4>Ongoing support</h4><p>Maintenance, follow-ups, reporting and documentation continue long after onboarding.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="nri">
+  <div class="wrap">
+    <div class="nri reveal">
+      <div class="inner">
+        <div>
+          <span class="eyebrow" style="color:#ffe39a">NRI Property Management</span>
+          <h2>Own property in India? We manage it for you.</h2>
+          <p>Distance shouldn't mean uncertainty. Get a dependable local partner for periodic checks, inventory verification, bill payments, tenant handling and complete remote management.</p>
+          <div class="hero-cta" style="margin-top:26px"><a class="btn btn-primary" style="background:var(--amber);color:var(--navy);box-shadow:none" href="#contact">Talk to us</a></div>
+        </div>
+        <div class="nri-list">
+          <div class="item"><h4>Remote visibility</h4><p>Periodic updates without being physically present in Coimbatore.</p></div>
+          <div class="item"><h4>Bills &amp; expense clarity</h4><p>Less guesswork around collections, bill payments and upkeep.</p></div>
+          <div class="item"><h4>Inventory &amp; vendor control</h4><p>Entry/exit checks plus trusted repair handling prevent avoidable losses.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" style="background:linear-gradient(180deg,var(--bg),#fff)">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center;margin:0 auto 42px"><span class="eyebrow">Testimonials</span><h2>Trusted by owners &amp; NRIs</h2></div>
+    <div class="quotes">
+      <div class="quote reveal"><div class="stars">★★★★★</div><p>"NestGuard made tenant coordination and maintenance follow-up incredibly easy. What impressed me most was the transparency around repair costs."</p><div class="who"><span class="av">PO</span><div><b>Property Owner</b><span>Coimbatore</span></div></div></div>
+      <div class="quote reveal d1"><div class="stars">★★★★★</div><p>"As an NRI, I wanted a team I could trust without daily follow-ups. Their updates, bill handling and local coordination gave me real confidence."</p><div class="who"><span class="av">NO</span><div><b>NRI Owner</b><span>Dubai</span></div></div></div>
+      <div class="quote reveal d2"><div class="stars">★★★★★</div><p>"The best part was the clarity. From rent collection to documentation, everything felt structured, transparent and genuinely stress-free."</p><div class="who"><span class="av">WP</span><div><b>Working Professional</b><span>Chennai</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="contact">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <div>
+        <span class="eyebrow">Get started</span>
+        <h2>Let us manage your property, stress-free.</h2>
+        <p class="lead">We work with owners in Coimbatore &amp; nearby cities who want dependable, professional management with transparent repair handling.</p>
+        <div class="contact-lines">
+          <a class="cl" href="tel:8344481044"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h3l2 5-2 1a11 11 0 0 0 5 5l1-2 5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span><div><small>Phone / WhatsApp</small><b>8344481044</b></div></a>
+          <a class="cl" href="mailto:nestguardprop@gmail.com"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.8"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.8"/></svg></span><div><small>Email</small><b>nestguardprop@gmail.com</b></div></a>
+          <div class="cl"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg></span><div><small>Location</small><b>Coimbatore, Tamil Nadu</b></div></div>
+        </div>
+      </div>
+      <form onsubmit="event.preventDefault();this.reset();alert('Demo only — this would send your enquiry to NestGuard.')">
+        <label>Name</label><input required placeholder="Your name" />
+        <div class="frow"><div style="flex:1"><label>Phone</label><input required placeholder="Phone" inputmode="tel" /></div><div style="flex:1"><label>City</label><input placeholder="City" /></div></div>
+        <label>Email</label><input type="email" placeholder="you@email.com" />
+        <label>Message</label><textarea placeholder="Tell us about your property…"></textarea>
+        <button class="btn btn-primary" style="justify-content:center" type="submit">Send Enquiry →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#"><span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11.5 12 4l9 7.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v9h14v-9" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 19v-5h4v5" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></svg></span>NestGuard</a>
+        <p style="margin-top:14px;max-width:34ch;font-size:14px;color:#aebfd0">Transparent property management for Coimbatore &amp; nearby cities. Your property, our responsibility.</p>
+      </div>
+      <div><h5>Services</h5><a href="#services">Property Management</a><a href="#services">Rental &amp; Lettings</a><a href="#services">Maintenance &amp; Repairs</a><a href="#nri">NRI Services</a></div>
+      <div><h5>Contact</h5><a href="tel:8344481044">8344481044</a><a href="mailto:nestguardprop@gmail.com">nestguardprop@gmail.com</a><a href="#">Coimbatore, Tamil Nadu</a></div>
+    </div>
+    <div class="foot-bot"><span>© 2026 NestGuard. Property management for Coimbatore &amp; nearby cities.</span><span>No hidden charges · Complete transparency</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');
+    var n=e.target.querySelector?e.target:null; io.unobserve(e.target);}})},{threshold:.14,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+  // count up
+  var co=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target,t=+el.dataset.count,suf=el.dataset.suffix||'',s=0,step=Math.max(1,Math.ceil(t/40));
+    (function go(){s+=step;if(s>=t){el.textContent=t+suf;}else{el.textContent=s+suf;requestAnimationFrame(go);} })();co.unobserve(el);})},{threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(function(el){co.observe(el)});
+})();
+</script>
+</body>
+</html>
