@@ -63,7 +63,7 @@ export default function Contact() {
             <AnimatePresence mode="wait">
               {sent ? (
                 <motion.div
-                  key="ok" className="form-ok"
+                  key="ok" className="form-ok" role="status" aria-live="polite"
                   initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.35 }}
                 >
@@ -73,10 +73,10 @@ export default function Contact() {
                 </motion.div>
               ) : (
                 <motion.div key="fields" exit={{ opacity: 0 }}>
-                  <label htmlFor="f-name">Name</label>
-                  <input id="f-name" name="name" required placeholder="Your name" autoComplete="name" />
-                  <label htmlFor="f-phone">Phone</label>
-                  <input id="f-phone" name="phone" required placeholder="Phone" inputMode="tel" autoComplete="tel" />
+                  <label htmlFor="f-name">Name <span className="req" aria-hidden="true">*</span></label>
+                  <input id="f-name" name="name" required aria-required="true" placeholder="Your name" autoComplete="name" />
+                  <label htmlFor="f-phone">Phone <span className="req" aria-hidden="true">*</span></label>
+                  <input id="f-phone" name="phone" type="tel" required aria-required="true" placeholder="Phone" inputMode="tel" autoComplete="tel" />
                   <label htmlFor="f-city">City</label>
                   <input id="f-city" name="city" placeholder="Your city" autoComplete="address-level2" />
                   <label htmlFor="f-service">I need help with</label>

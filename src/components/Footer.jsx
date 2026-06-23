@@ -33,7 +33,7 @@ export default function Footer() {
         </div>
         <div className="foot">
           <span>© {new Date().getFullYear()} NestGuard · Coimbatore &amp; nearby cities</span>
-          <span style={{ color: 'var(--terra)', fontWeight: 600 }}>No hidden charges, ever.</span>
+          <span style={{ color: 'var(--terra-text)', fontWeight: 600 }}>No hidden charges, ever.</span>
         </div>
       </div>
     </footer>

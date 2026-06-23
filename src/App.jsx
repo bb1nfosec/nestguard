@@ -1,3 +1,4 @@
+import { MotionConfig } from 'framer-motion'
 import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
 import Strip from './components/Strip.jsx'
@@ -13,7 +14,7 @@ import FloatingActions from './components/FloatingActions.jsx'
 
 export default function App() {
   return (
-    <>
+    <MotionConfig reducedMotion="user">
       <a className="skip" href="#main">Skip to content</a>
       <Nav />
       <main id="main">
@@ -29,6 +30,6 @@ export default function App() {
       </main>
       <Footer />
       <FloatingActions />
-    </>
+    </MotionConfig>
   )
 }
