@@ -1,4 +1,5 @@
 import { MotionConfig } from 'framer-motion'
+import ScrollProgress from './components/ScrollProgress.jsx'
 import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
 import Strip from './components/Strip.jsx'
@@ -16,6 +17,7 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <a className="skip" href="#main">Skip to content</a>
+      <ScrollProgress />
       <Nav />
       <main id="main">
         <Hero />
